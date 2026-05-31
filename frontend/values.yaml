@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/abdosaad203/frontend
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: alb
+  host: frontend.local
+
+pvc:
+  enabled: true
+  storageClassName: gp2
+  size: 1Gi
+  mountPath: /var/log/nginx
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: []

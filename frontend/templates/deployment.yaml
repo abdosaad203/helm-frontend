@@ -26,11 +26,15 @@ spec:
           ports:
             - containerPort: 80
 
+          {{- if .Values.pvc.enabled }}
           volumeMounts:
             - name: logs
               mountPath: {{ .Values.pvc.mountPath }}
+          {{- end }}
 
+      {{- if .Values.pvc.enabled }}
       volumes:
         - name: logs
           persistentVolumeClaim:
             claimName: {{ include "frontend.fullname" . }}-pvc
+      {{- end }}

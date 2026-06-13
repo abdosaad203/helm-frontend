@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/abdosaad203/frontend
+  repository: ghcr.io/abdosaad203/ecommerce-frontend
   tag: latest
   pullPolicy: Always
 
@@ -15,7 +15,7 @@ ingress:
 
 pvc:
   enabled: true
-  storageClass: gp2
+  storageClassName: gp2
   accessMode: ReadWriteOnce
   size: 1Gi
   mountPath: /var/log/nginx
